@@ -1,0 +1,26 @@
+{
+    "name": "simple-chat",
+    "version": "1.0.0",
+    "description": "simple-chat with socket io",
+    "main": "server.js",
+    "keywords": [
+        "socket io",
+        "react"
+    ],
+    "author": "Alexey Alexeevskiy <alex967268@gmail.com>",
+    "license": "ISC",
+    "scripts": {
+        "server": "nodemon server.js",
+        "client": "npm run start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "dependencies": {
+        "config": "^3.3.6",
+        "express": "^4.17.1",
+        "socket.io": "^4.2.0"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.1",
+        "nodemon": "^2.0.12"
+    }
+}
