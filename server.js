@@ -28,7 +28,6 @@ app.get("/rooms/:id", (req, res) => {
 })
 
 app.post("/rooms", (req, res) => {
-    //res.json(rooms)'
     const { roomId, userName } = req.body
 
     if (!rooms.has(roomId)) {
@@ -39,10 +38,13 @@ app.post("/rooms", (req, res) => {
                 ["messages", []],
             ])
         )
+
+        res.status(200).json({ message: "Created and joined to room  #" + roomId })
+    } else if (Array.from(rooms.get(roomId).get("users").values()).includes(userName)) {
+        return res.status(403).json({ message: "This username already exists" })
+    } else {
+        res.status(200).json({ message: "Joined to room #" + roomId })
     }
-    setTimeout(() => {
-        res.send()
-    }, 500)
 })
 
 io.on("connection", (socket) => {
